@@ -1,3 +1,4 @@
+# Medium
 import numpy as np
 
 arr = np.zeros(6, dtype=np.int8)
