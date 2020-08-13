@@ -1,3 +1,5 @@
+#Medium
+
 from os import system, name
 
 # clear screen function
