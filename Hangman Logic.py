@@ -95,4 +95,4 @@ while True:
             print('\nMAN GOT HANGED')
             exit(0)
 
-        pause()
+        pause() 
