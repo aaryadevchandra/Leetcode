@@ -1,30 +1,77 @@
-//hard question
 #include<iostream>
-#include<process.h>
+#include<vector>
 using namespace std;
-int main()
-{
-    int arr[] = {7, 8, 9, 11, 12};
-    int cf = 0, size = 5;
-    for(int num=1;num<size;num++)
+
+int firstMissingPositive(vector<int>& nums) {
+        
+       long long temp;
+    // for(int i=0;i<nums.capacity();i++)
+    // {
+    //     for(int j=i+1;j<nums.capacity();j++)
+    //     {
+    //         if(nums[i] > nums[j])
+    //         {
+    //             temp = nums[i];
+    //             nums[i] = nums[j];
+    //             nums[j] = temp;
+    //         }
+    //     }
+    // }
+
+    cout<<nums.at(0)<<", "<<nums.at(1)<<", "<<nums.at(2)<<endl;
+    cout<<endl;
+
+    int num = 1, flag = 0, break_flag = 0;
+
+
+    while(true)
     {
-        for(int j=0;j<size;j++)
+        for(int i=0;i<nums.capacity();i++)
         {
-            if(num != arr[j])
+
+            for(int j=i+1;j<nums.capacity();j++)
             {
-                cf++;
-                if(cf == size)
+                if(nums[i] > nums[j])
                 {
-                    cout<<num;
-                    exit(0);
+                    temp = nums[i];
+                    nums[i] = nums[j];
+                    nums[j] = temp;
                 }
             }
-            else
+
+            if(nums[i] == num)
             {
-                cf = 0;
+                flag = 1;
+                continue;
+            }
+
+            if(flag == 0 && i == nums.capacity() - 1)
+            {
+                break_flag = 1;
                 break;
             }
         }
+
+        if(break_flag == 1)
+        {
+            break;
+        }
+
+        flag = 0;
+        num++;
     }
-    return 0;
+
+    return num;
+        
+    }
+
+int main()
+{
+    vector<int> nums;
+
+    nums.push_back(1);
+    nums.push_back(2);
+    nums.push_back(0);
+
+    cout<<firstMissingPositive(nums);
 }
